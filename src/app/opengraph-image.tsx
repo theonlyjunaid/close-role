@@ -17,9 +17,9 @@ export default function OpenGraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          padding: "56px",
+          padding: "60px",
           background:
-            "linear-gradient(135deg, rgba(245,240,229,1) 0%, rgba(239,246,236,1) 45%, rgba(248,245,238,1) 100%)",
+            "linear-gradient(145deg, #f0f4f8 0%, #e8eef4 40%, #f5f7fa 100%)",
           color: "#0f172a",
           fontFamily: "sans-serif",
         }}
@@ -28,21 +28,22 @@ export default function OpenGraphImage() {
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "18px",
-            fontSize: 28,
+            gap: "16px",
+            fontSize: 26,
             fontWeight: 600,
           }}
         >
           <div
             style={{
-              width: 52,
-              height: 52,
+              width: 48,
+              height: 48,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              background: "#143c2f",
+              background: "#1B2B3A",
               color: "#f8fafc",
-              border: "1px solid rgba(20,60,47,0.25)",
+              fontSize: 22,
+              fontWeight: 700,
             }}
           >
             C
@@ -50,42 +51,43 @@ export default function OpenGraphImage() {
           CloseRole
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "22px", maxWidth: 860 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "20px", maxWidth: 840 }}>
           <div
             style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "12px",
-              fontSize: 20,
+              fontSize: 14,
               textTransform: "uppercase",
               letterSpacing: "0.35em",
-              color: "#166534",
+              color: "#0e8a72",
+              fontWeight: 600,
             }}
           >
-            Hire without the HR
+            AI Hiring Assistant for Small Teams
           </div>
-          <div style={{ fontSize: 68, lineHeight: 1.02, fontWeight: 700 }}>
-            Your next hire shouldn&apos;t take 20 hours.
+          <div style={{ fontSize: 64, lineHeight: 1.05, fontWeight: 700, letterSpacing: "-0.02em" }}>
+            Stop reading resumes at midnight.
           </div>
-          <div style={{ fontSize: 28, lineHeight: 1.4, color: "#334155" }}>
-            AI reads every application, ranks candidates, writes interview questions,
-            and helps founders stop screening resumes at midnight.
+          <div style={{ fontSize: 26, lineHeight: 1.45, color: "#475569" }}>
+            Post a job, let AI screen every applicant, and get a ranked shortlist with
+            interview questions. First job free.
           </div>
         </div>
 
         <div
           style={{
             display: "flex",
-            gap: "18px",
-            fontSize: 24,
+            gap: "16px",
+            fontSize: 20,
             color: "#334155",
           }}
         >
-          <div style={{ padding: "16px 20px", border: "1px solid rgba(15,23,42,0.12)", background: "rgba(255,255,255,0.7)" }}>
+          <div style={{ padding: "14px 20px", border: "1px solid rgba(15,23,42,0.1)", background: "rgba(255,255,255,0.8)" }}>
             First job free
           </div>
-          <div style={{ padding: "16px 20px", border: "1px solid rgba(15,23,42,0.12)", background: "rgba(255,255,255,0.7)" }}>
-            Waitlist open
+          <div style={{ padding: "14px 20px", border: "1px solid rgba(15,23,42,0.1)", background: "rgba(255,255,255,0.8)" }}>
+            $99 per job after that
+          </div>
+          <div style={{ padding: "14px 20px", border: "1px solid rgba(15,23,42,0.1)", background: "rgba(255,255,255,0.8)" }}>
+            No subscription
           </div>
         </div>
       </div>

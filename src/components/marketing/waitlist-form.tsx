@@ -79,7 +79,7 @@ export function WaitlistForm({
           type: "success",
           message:
             payload.message ??
-            "You’re on the list. We’ll email you when early access opens.",
+            "You\u2019re on the list. We\u2019ll email you when early access opens.",
         })
         setValues({
           email: "",
@@ -89,71 +89,121 @@ export function WaitlistForm({
       } catch {
         setStatus({
           type: "error",
-          message: "We couldn't submit your request. Please try again.",
+          message: "We couldn\u2019t submit your request. Please try again.",
         })
       }
     })
   }
 
-  return (
-    <form className={cn("space-y-4", className)} onSubmit={handleSubmit}>
-      <div
-        className={cn(
-          "grid gap-3",
-          compact ? "lg:grid-cols-[1.35fr_1fr_1fr_auto]" : "md:grid-cols-3"
-        )}
-      >
-        <div className={compact ? "lg:col-auto" : "md:col-span-3"}>
-          <Label htmlFor={compact ? "hero-email" : "cta-email"} className="mb-2">
-            Work email
-          </Label>
+  if (compact) {
+    return (
+      <form className={cn("space-y-3", className)} onSubmit={handleSubmit}>
+        <div className="flex gap-3">
           <Input
-            id={compact ? "hero-email" : "cta-email"}
+            id="hero-email"
             type="email"
             value={values.email}
             onChange={handleChange("email")}
             placeholder="you@company.com"
             autoComplete="email"
             required
-            className="h-11 border-foreground/10 bg-white px-3 text-sm"
+            aria-label="Work email"
+            className="h-12 flex-1 border-edge bg-white px-4 text-base"
+          />
+          <Button
+            type="submit"
+            size="lg"
+            className="h-12 shrink-0 border border-brand bg-brand px-6 text-base font-semibold text-brand-fg hover:bg-brand-hover"
+            disabled={isPending}
+          >
+            {isPending ? (
+              <SpinnerGapIcon className="size-5 animate-spin" />
+            ) : (
+              <>
+                Get free access
+                <ArrowRightIcon className="ml-1 size-4" />
+              </>
+            )}
+          </Button>
+        </div>
+        <p className="text-sm text-slate-500">
+          Free forever for your first hire. No credit card required.
+        </p>
+
+        {status.type !== "idle" ? (
+          <Alert
+            variant={status.type === "error" ? "destructive" : "default"}
+            className={cn(
+              "border px-4 py-3",
+              status.type === "success"
+                ? "border-sea/15 bg-sea-light text-sea-dark"
+                : "border-rose-200 bg-rose-50"
+            )}
+          >
+            {status.type === "success" ? (
+              <CheckCircleIcon className="size-4 text-sea" weight="fill" />
+            ) : null}
+            <AlertTitle>
+              {status.type === "success" ? "You\u2019re on the waitlist" : "Submission failed"}
+            </AlertTitle>
+            <AlertDescription>{status.message}</AlertDescription>
+          </Alert>
+        ) : null}
+      </form>
+    )
+  }
+
+  return (
+    <form className={cn("space-y-4", className)} onSubmit={handleSubmit}>
+      <div className="grid gap-3 md:grid-cols-3">
+        <div className="md:col-span-3">
+          <Label htmlFor="cta-email" className="mb-2">
+            Work email
+          </Label>
+          <Input
+            id="cta-email"
+            type="email"
+            value={values.email}
+            onChange={handleChange("email")}
+            placeholder="you@company.com"
+            autoComplete="email"
+            required
+            className="h-11 border-edge bg-white px-3 text-sm"
           />
         </div>
 
         <div>
-          <Label
-            htmlFor={compact ? "hero-company" : "cta-company"}
-            className="mb-2"
-          >
+          <Label htmlFor="cta-company" className="mb-2">
             Company name
           </Label>
           <Input
-            id={compact ? "hero-company" : "cta-company"}
+            id="cta-company"
             value={values.companyName}
             onChange={handleChange("companyName")}
             placeholder="Optional"
             autoComplete="organization"
-            className="h-11 border-foreground/10 bg-white px-3 text-sm"
+            className="h-11 border-edge bg-white px-3 text-sm"
           />
         </div>
 
         <div>
-          <Label htmlFor={compact ? "hero-role" : "cta-role"} className="mb-2">
+          <Label htmlFor="cta-role" className="mb-2">
             Next role to hire
           </Label>
           <Input
-            id={compact ? "hero-role" : "cta-role"}
+            id="cta-role"
             value={values.hiringRole}
             onChange={handleChange("hiringRole")}
             placeholder="Optional"
-            className="h-11 border-foreground/10 bg-white px-3 text-sm"
+            className="h-11 border-edge bg-white px-3 text-sm"
           />
         </div>
 
-        <div className={cn("flex items-end", compact ? "lg:col-auto" : "md:col-span-3")}>
+        <div className="flex items-end md:col-span-3">
           <Button
             type="submit"
             size="lg"
-            className="h-11 w-full border border-emerald-950 bg-emerald-950 px-5 text-sm font-semibold text-stone-50 hover:bg-emerald-900"
+            className="h-11 w-full border border-brand bg-brand px-5 text-sm font-semibold text-brand-fg hover:bg-brand-hover"
             disabled={isPending}
           >
             {isPending ? (
@@ -163,7 +213,7 @@ export function WaitlistForm({
               </>
             ) : (
               <>
-                Get early access
+                Get early access — it&apos;s free
                 <ArrowRightIcon className="size-4" />
               </>
             )}
@@ -182,15 +232,15 @@ export function WaitlistForm({
           className={cn(
             "border px-4 py-3",
             status.type === "success"
-              ? "border-emerald-900/10 bg-emerald-50 text-emerald-950"
-              : "border-rose-900/10 bg-rose-50"
+              ? "border-sea/15 bg-sea-light text-sea-dark"
+              : "border-rose-200 bg-rose-50"
           )}
         >
           {status.type === "success" ? (
-            <CheckCircleIcon className="size-4 text-emerald-700" weight="fill" />
+            <CheckCircleIcon className="size-4 text-sea" weight="fill" />
           ) : null}
           <AlertTitle>
-            {status.type === "success" ? "You’re on the waitlist" : "Submission failed"}
+            {status.type === "success" ? "You\u2019re on the waitlist" : "Submission failed"}
           </AlertTitle>
           <AlertDescription>{status.message}</AlertDescription>
         </Alert>

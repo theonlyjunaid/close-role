@@ -8,7 +8,15 @@ import {
   XCircleIcon,
 } from "@phosphor-icons/react/dist/ssr"
 
-const topCandidates = [
+const bucketStyles = {
+  Interview: "border-emerald-900/20 bg-emerald-100 text-emerald-950",
+  Maybe: "border-amber-900/20 bg-amber-100 text-amber-950",
+  Skip: "border-rose-900/15 bg-rose-100 text-rose-950",
+} as const
+
+type Bucket = keyof typeof bucketStyles
+
+const topCandidates: { name: string; score: number; bucket: Bucket; summary: string }[] = [
   {
     name: "Maria S.",
     score: 94,
@@ -41,18 +49,12 @@ const topCandidates = [
   },
 ]
 
-const bucketStyles = {
-  Interview: "border-emerald-900/20 bg-emerald-100 text-emerald-950",
-  Maybe: "border-amber-900/20 bg-amber-100 text-amber-950",
-  Skip: "border-rose-900/15 bg-rose-100 text-rose-950",
-} as const
-
 const insightRows = [
   {
     icon: CheckCircleIcon,
     title: "Best fit",
     detail: "Spanish-speaking, can start in 2 weeks, handled 60+ calls/day.",
-    tone: "text-emerald-900",
+    tone: "text-sea-dark",
   },
   {
     icon: WarningCircleIcon,
@@ -70,12 +72,12 @@ const insightRows = [
 
 export function ProductMockup() {
   return (
-    <div className="relative overflow-hidden border border-foreground/10 bg-white shadow-[0_32px_90px_-40px_rgba(12,28,20,0.45)]">
-      <div className="absolute inset-x-0 top-0 h-24 bg-[linear-gradient(135deg,rgba(22,101,52,0.16),rgba(253,246,231,0))]" />
-      <div className="border-b border-foreground/10 px-5 py-4">
+    <div className="relative overflow-hidden border border-edge bg-white shadow-[0_32px_90px_-40px_rgba(15,23,42,0.4)]">
+      <div className="absolute inset-x-0 top-0 h-24 bg-[linear-gradient(135deg,rgba(27,43,58,0.08),transparent)]" />
+      <div className="border-b border-edge px-5 py-4">
         <div className="flex items-center justify-between gap-4">
           <div>
-            <p className="text-[10px] uppercase tracking-[0.32em] text-emerald-900/70">
+            <p className="text-[10px] uppercase tracking-[0.32em] text-slate-500">
               CloseRole dashboard
             </p>
             <h3 className="mt-2 text-lg font-semibold text-slate-950">
@@ -85,7 +87,7 @@ export function ProductMockup() {
               127 applicants processed in 94 seconds
             </p>
           </div>
-          <div className="hidden items-center gap-2 border border-emerald-900/10 bg-emerald-50 px-3 py-2 text-xs text-emerald-950 md:flex">
+          <div className="hidden items-center gap-2 border border-sea/15 bg-sea-light px-3 py-2 text-xs text-sea-dark md:flex">
             <SparkleIcon className="size-4" weight="fill" />
             AI shortlist ready
           </div>
@@ -93,7 +95,7 @@ export function ProductMockup() {
       </div>
 
       <div className="grid gap-0 lg:grid-cols-[1.2fr_0.9fr]">
-        <div className="border-b border-foreground/10 p-4 lg:border-r lg:border-b-0">
+        <div className="border-b border-edge p-4 lg:border-r lg:border-b-0">
           <div className="mb-3 flex items-center justify-between">
             <p className="text-[10px] uppercase tracking-[0.28em] text-slate-500">
               Ranked candidates
@@ -108,7 +110,7 @@ export function ProductMockup() {
             {topCandidates.map((candidate) => (
               <div
                 key={candidate.name}
-                className="grid gap-3 border border-foreground/10 bg-stone-50/70 p-3 md:grid-cols-[minmax(0,1fr)_auto]"
+                className="grid gap-3 border border-edge bg-slate-50 p-3 md:grid-cols-[minmax(0,1fr)_auto]"
               >
                 <div className="space-y-1">
                   <div className="flex flex-wrap items-center gap-2">
@@ -137,26 +139,26 @@ export function ProductMockup() {
           </div>
         </div>
 
-        <div className="bg-stone-50/60 p-4">
+        <div className="bg-slate-50 p-4">
           <div className="mb-3 flex items-center justify-between">
             <p className="text-[10px] uppercase tracking-[0.28em] text-slate-500">
               Candidate brief
             </p>
-            <div className="inline-flex items-center gap-2 border border-foreground/10 bg-white px-2.5 py-1 text-xs text-slate-700">
+            <div className="inline-flex items-center gap-2 border border-edge bg-white px-2.5 py-1 text-xs text-slate-700">
               <CalendarDotsIcon className="size-4" />
               Schedule in 1 click
             </div>
           </div>
 
-          <div className="space-y-3 border border-foreground/10 bg-white p-4">
-            <div className="flex items-center justify-between border-b border-foreground/10 pb-3">
+          <div className="space-y-3 border border-edge bg-white p-4">
+            <div className="flex items-center justify-between border-b border-edge pb-3">
               <div>
                 <p className="text-sm font-semibold text-slate-950">Maria S.</p>
                 <p className="text-xs text-slate-500">
                   Recommendation: strong hire
                 </p>
               </div>
-              <div className="border border-emerald-900/15 bg-emerald-50 px-2 py-1 text-xs font-semibold text-emerald-950">
+              <div className="border border-sea/15 bg-sea-light px-2 py-1 text-xs font-semibold text-sea-dark">
                 94 / 100
               </div>
             </div>
@@ -181,8 +183,8 @@ export function ProductMockup() {
               })}
             </div>
 
-            <div className="grid gap-3 border-t border-dashed border-foreground/10 pt-3 md:grid-cols-2">
-              <div className="border border-foreground/10 bg-stone-50 p-3">
+            <div className="grid gap-3 border-t border-dashed border-edge pt-3 md:grid-cols-2">
+              <div className="border border-edge bg-slate-50 p-3">
                 <p className="text-[10px] uppercase tracking-[0.24em] text-slate-500">
                   Interview
                 </p>
@@ -190,7 +192,7 @@ export function ProductMockup() {
                   Tailored questions generated from the application automatically.
                 </p>
               </div>
-              <div className="border border-foreground/10 bg-stone-50 p-3">
+              <div className="border border-edge bg-slate-50 p-3">
                 <p className="text-[10px] uppercase tracking-[0.24em] text-slate-500">
                   Transcript review
                 </p>
@@ -202,15 +204,15 @@ export function ProductMockup() {
           </div>
 
           <div className="mt-3 grid gap-2 text-xs text-slate-500 sm:grid-cols-3">
-            <div className="flex items-center gap-2 border border-foreground/10 bg-white px-3 py-2">
+            <div className="flex items-center gap-2 border border-edge bg-white px-3 py-2">
               <CheckCircleIcon className="size-4 text-emerald-700" weight="fill" />
               Interview
             </div>
-            <div className="flex items-center gap-2 border border-foreground/10 bg-white px-3 py-2">
+            <div className="flex items-center gap-2 border border-edge bg-white px-3 py-2">
               <WarningCircleIcon className="size-4 text-amber-700" weight="fill" />
               Maybe
             </div>
-            <div className="flex items-center gap-2 border border-foreground/10 bg-white px-3 py-2">
+            <div className="flex items-center gap-2 border border-edge bg-white px-3 py-2">
               <XCircleIcon className="size-4 text-rose-700" weight="fill" />
               Skip
             </div>

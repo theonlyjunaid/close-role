@@ -21,9 +21,9 @@ export const metadata: Metadata = {
   description:
     "Post a job, get a custom application page, and let AI score and rank every candidate. Built for small businesses without HR teams. First job free. No subscription.",
   openGraph: {
-    title: "Your next hire shouldn't take 20 hours.",
+    title: "Stop reading resumes at midnight.",
     description:
-      "CloseRole AI reads every application, ranks candidates, writes interview questions, and analyzes transcripts so founders can stop screening resumes at midnight.",
+      "CloseRole AI screens every applicant, ranks them by fit, writes interview questions, and tells you who to hire. First job free. No subscription.",
     url: "https://closerole.com",
     siteName: "CloseRole",
     locale: "en_US",
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Your next hire shouldn't take 20 hours.",
+    title: "Stop reading resumes at midnight.",
     description:
-      "CloseRole AI reads every application, ranks candidates, writes interview questions, and analyzes transcripts so founders can stop screening resumes at midnight.",
+      "CloseRole AI screens every applicant, ranks them by fit, writes interview questions, and tells you who to hire. First job free. No subscription.",
   },
 }
 
