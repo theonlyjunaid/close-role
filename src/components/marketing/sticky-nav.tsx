@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { ArrowRightIcon } from "@phosphor-icons/react"
 import { motion, AnimatePresence } from "framer-motion"
+import Link from "next/link"
 
 import { cn } from "@/lib/utils"
 
@@ -29,12 +30,12 @@ export function StickyNav() {
           className="fixed inset-x-0 top-0 z-50 hidden border-b border-edge bg-[rgba(255,255,255,0.92)] backdrop-blur-lg md:block"
         >
           <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 sm:px-10 lg:px-16">
-            <a href="#" className="flex items-center gap-2.5 text-sm font-semibold text-slate-950">
+            <Link href="/" className="flex items-center gap-2.5 text-sm font-semibold text-slate-950">
               <span className="grid size-8 place-items-center border border-brand/15 bg-brand text-xs text-brand-fg">
                 C
               </span>
               CloseRole
-            </a>
+            </Link>
 
             <nav className="flex items-center gap-6 text-sm text-slate-600">
               <a href="#how-it-works" className="transition hover:text-slate-950">How It Works</a>

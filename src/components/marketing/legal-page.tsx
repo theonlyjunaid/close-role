@@ -76,9 +76,9 @@ export function LegalPage({ title, description, lastUpdated, sections }: LegalPa
           <div className="flex flex-col gap-4 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
             <p>
               Questions? Reach out at{" "}
-              <a href="mailto:hello@closerole.com" className="text-brand underline underline-offset-4 transition hover:text-brand-hover">
+              <Link href="mailto:hello@closerole.com" className="text-brand underline underline-offset-4 transition hover:text-brand-hover">
                 hello@closerole.com
-              </a>
+              </Link>
             </p>
             <div className="flex items-center gap-2">
               <ShieldCheckIcon className="size-4 text-sea" weight="fill" />

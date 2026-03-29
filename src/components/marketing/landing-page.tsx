@@ -44,7 +44,7 @@ const storyMoments = [
   },
   {
     label: "Tuesday 6 PM",
-    body: "147 emails. All resumes. You open three, skim them, get interrupted by a customer, close your laptop.",
+    body: "150 emails. All resumes. You open three, skim them, get interrupted by a customer, close your laptop.",
     emphasis: false,
   },
   {
@@ -82,7 +82,7 @@ const howItWorksSteps = [
   },
   {
     title: "Interview, decide, done",
-    body: "Get candidate-specific interview questions, paste the transcript back in, and receive a clear hire / maybe / pass recommendation with context.",
+    body: "Get candidate-specific interview questions, paste the transcript back in, and receive a clear strong hire / maybe / pass recommendation with context.",
     icon: CalendarDotsIcon,
   },
 ] as const
@@ -98,7 +98,7 @@ const personas = [
 const objectionCards = [
   {
     title: "Can\u2019t I just read the resumes myself?",
-    body: "You can. It\u2019ll cost you 15\u201320 hours per hire. That\u2019s usually more expensive than the tool you\u2019re trying to avoid buying.",
+    body: "You can. It\u2019ll cost you 20+ hours per hire. That\u2019s usually more expensive than the tool you\u2019re trying to avoid buying.",
   },
   {
     title: "Can\u2019t I just use Indeed?",
@@ -131,7 +131,7 @@ const features = [
   },
   {
     title: "AI scores and ranks every applicant",
-    body: "Not keyword matching. Actual fit analysis with a plain-English summary for each person. You review 5, not 127.",
+    body: "Not keyword matching. Actual fit analysis with a plain-English summary for each person. You review 5, not 150.",
     icon: MedalIcon,
   },
   {
@@ -169,7 +169,7 @@ const pricingTiers = [
     price: "$99",
     description: "One payment. Use it until the role is filled. No subscription.",
     points: [
-      "1 job posting active for 45 days",
+      "1 job posting active for 90 days",
       "Up to 300 applications",
       "Red flags and candidate summaries",
       "Candidate-specific interview questions",
@@ -220,13 +220,14 @@ const faqs = [
   },
 ] as const
 
-const pricingComparisonRows = [
-  ["Indeed sponsored post", "$150\u2013$300 / month", "Applicants \u2014 you still sort them yourself"],
-  ["ZipRecruiter", "$249\u2013$399 / month", "Applicants + basic matching"],
-  ["LinkedIn promoted post", "$300\u2013$500 / job", "Applicants from your network"],
-  ["Hiring a recruiter", "$5,000\u2013$12,500 / hire", "Someone else does it for you"],
-  ["Reading resumes yourself", "$0 + 15 hours", "Exhaustion and gut decisions"],
-  ["CloseRole", "$99 / job", "Applicants scored, ranked, and interview-ready"],
+const hiddenCostItems = [
+  { task: "Writing and rewriting the job post", cost: "2 hours", emotional: false },
+  { task: "Collecting resumes from 5 different platforms", cost: "2–3 hours", emotional: false },
+  { task: "Reading 150+ resumes", cost: "10\u201315 hours", emotional: false },
+  { task: "Googling \u201Cgood interview questions for [role]\u201D", cost: "30 min", emotional: false },
+  { task: "Scheduling and rescheduling interviews", cost: "2\u20133 hours", emotional: false },
+  { task: "Second-guessing your gut after every interview", cost: "every night that week", emotional: true },
+  { task: "The one who quit after three weeks", cost: "start over", emotional: true },
 ] as const
 
 const ctaLinkClasses =
@@ -268,9 +269,7 @@ export function LandingPage() {
             <a href="#pricing" className="transition hover:text-slate-950">Pricing</a>
             <a href="#faq" className="transition hover:text-slate-950">FAQ</a>
           </nav>
-          <a href="#waitlist" className={cn(ctaLinkClasses, "h-11 px-5 text-sm border-brand bg-brand text-brand-fg hover:bg-brand-hover")}>
-            Get early access
-          </a>
+
         </div>
 
         <div className="grid items-center gap-16 pt-16 lg:grid-cols-[1.1fr_0.9fr]">
@@ -289,7 +288,7 @@ export function LandingPage() {
                 &mdash; so you can get back to running your business.
               </p>
 
-              <div id="waitlist" className="max-w-lg pt-2">
+              <div className="max-w-lg pt-2">
                 <WaitlistForm compact />
               </div>
 
@@ -421,7 +420,7 @@ export function LandingPage() {
         <AnimateOnScroll>
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-2xl font-semibold text-slate-950 sm:text-3xl">
-              Your first job posting is free. See what 15 hours of saved time feels like.
+              Your first job posting is free. See what 20 hours of saved time feels like.
             </p>
             <div className="mt-8 flex justify-center">
               <a
@@ -447,7 +446,7 @@ export function LandingPage() {
               Everything you need to make one great hire.
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-lg leading-8 text-slate-400">
-              All in plain English. Because your customer is trying to make a hire,
+              All in plain English. Because you&apos;re trying to make a hire,
               not learn a product category.
             </p>
           </div>
@@ -491,7 +490,7 @@ export function LandingPage() {
               The difference
             </p>
             <h2 className="mt-5 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-              15 hours of screening &rarr; 15 minutes of reviewing.
+              20 hours of screening &rarr; 30 minutes of reviewing.
             </h2>
           </div>
         </AnimateOnScroll>
@@ -503,11 +502,11 @@ export function LandingPage() {
                 Without CloseRole
               </p>
               <ul className="mt-6 space-y-4 text-[15px] leading-7 text-slate-700">
-                <li className="flex gap-3"><span className="mt-1 text-rose-400">&times;</span> Post on Indeed, get 200 emails, read them at midnight.</li>
+                <li className="flex gap-3"><span className="mt-1 text-rose-400">&times;</span> Post on Indeed, get 150 emails, read them at midnight.</li>
                 <li className="flex gap-3"><span className="mt-1 text-rose-400">&times;</span> Guess which resumes are good based on a 30-second skim.</li>
                 <li className="flex gap-3"><span className="mt-1 text-rose-400">&times;</span> Come up with interview questions on the spot.</li>
                 <li className="flex gap-3"><span className="mt-1 text-rose-400">&times;</span> Hope the person you hired works out.</li>
-                <li className="flex gap-3"><span className="mt-1 text-rose-400">&times;</span> Spend 15&ndash;20 hours on every single hire.</li>
+                <li className="flex gap-3"><span className="mt-1 text-rose-400">&times;</span> Spend 20+ hours on every single hire.</li>
               </ul>
             </div>
           </AnimateOnScroll>
@@ -522,7 +521,7 @@ export function LandingPage() {
                 <li className="flex gap-3"><CheckCircleIcon className="mt-1 size-4 shrink-0 text-sea" weight="fill" /> AI reads every application and explains who to talk to and why.</li>
                 <li className="flex gap-3"><CheckCircleIcon className="mt-1 size-4 shrink-0 text-sea" weight="fill" /> Candidate-specific interview questions generated for you.</li>
                 <li className="flex gap-3"><CheckCircleIcon className="mt-1 size-4 shrink-0 text-sea" weight="fill" /> Transcript analysis gives a clear recommendation after the interview.</li>
-                <li className="flex gap-3"><CheckCircleIcon className="mt-1 size-4 shrink-0 text-sea" weight="fill" /> Spend closer to 2 hours per hire. Get back to your business.</li>
+                <li className="flex gap-3"><CheckCircleIcon className="mt-1 size-4 shrink-0 text-sea" weight="fill" /> Spend closer to 30 minutes per hire. Get back to your business.</li>
               </ul>
             </div>
           </AnimateOnScroll>
@@ -567,8 +566,8 @@ export function LandingPage() {
               You&apos;re not bad at hiring. You just don&apos;t have time for it.
             </p>
             <p className="mx-auto mt-4 max-w-lg text-base text-slate-600">
-              Let CloseRole handle the 15 hours of screening so you can focus on the
-              15-minute interview that actually matters.
+              Let CloseRole handle the 20 hours of screening so you can focus on the
+              30-minute review that actually matters.
             </p>
             <div className="mt-8 flex justify-center">
               <a
@@ -698,45 +697,66 @@ export function LandingPage() {
 
         <AnimateOnScroll className="mt-14">
           <div className="overflow-hidden border border-edge bg-white">
-            <div className="grid gap-6 border-b border-edge px-6 py-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <div className="grid gap-6 border-b border-edge px-6 py-8 lg:grid-cols-[1fr_1fr] lg:items-center">
               <div>
                 <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-slate-500">
-                  What you&apos;re spending today
+                  The hidden cost of every hire
                 </p>
-                <h3 className="mt-3 text-2xl font-semibold text-slate-950">
-                  The real comparison is not software. It&apos;s time, stress, and recruiter fees.
+                <h3 className="mt-3 text-2xl font-semibold text-slate-950 sm:text-[1.7rem] sm:leading-9">
+                  Your last hire cost more than you think.
                 </h3>
               </div>
               <p className="text-[15px] leading-7 text-slate-600">
-                Every line below is what founders already pay in money or time when they
-                hire without a system.
+                Not in recruiter fees. In the 20+ hours you spent reading, guessing,
+                and hoping you picked the right person.
               </p>
             </div>
-            <div className="overflow-x-auto">
-              <table className="min-w-full text-left text-sm">
-                <thead className="bg-slate-50 text-slate-500">
-                  <tr>
-                    <th className="px-6 py-4 font-medium">Option</th>
-                    <th className="px-6 py-4 font-medium">Cost</th>
-                    <th className="px-6 py-4 font-medium">What you get</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {pricingComparisonRows.map(([option, cost, result]) => (
-                    <tr
-                      key={option}
-                      className={cn(
-                        "border-t border-edge",
-                        option === "CloseRole" ? "bg-sea-light font-medium" : "bg-white"
-                      )}
-                    >
-                      <td className="px-6 py-4 font-medium text-slate-950">{option}</td>
-                      <td className="px-6 py-4 text-slate-600">{cost}</td>
-                      <td className="px-6 py-4 text-slate-600">{result}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+
+            <div className="divide-y divide-edge">
+              {hiddenCostItems.map((item) => (
+                <div
+                  key={item.task}
+                  className={cn(
+                    "flex items-baseline justify-between gap-6 px-6 py-4",
+                    item.emotional ? "bg-rose-50/60" : "bg-white"
+                  )}
+                >
+                  <p className={cn(
+                    "text-[15px] leading-7",
+                    item.emotional ? "italic text-slate-500" : "text-slate-700"
+                  )}>
+                    {item.task}
+                  </p>
+                  <span className={cn(
+                    "shrink-0 text-right text-sm font-medium tabular-nums",
+                    item.emotional ? "text-rose-500" : "text-slate-950"
+                  )}>
+                    {item.cost}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <div className="border-t-2 border-dashed border-slate-300 bg-slate-50 px-6 py-4">
+              <div className="flex items-baseline justify-between gap-6">
+                <p className="text-sm font-medium text-slate-500">Total per hire</p>
+                <span className="text-lg font-semibold text-slate-950">20+ hours &amp; your sanity</span>
+              </div>
+            </div>
+
+            <div className="border-t-2 border-sea bg-sea-light px-6 py-5">
+              <div className="flex items-center justify-between gap-6">
+                <div>
+                  <p className="text-base font-semibold text-slate-950">CloseRole</p>
+                  <p className="mt-0.5 text-sm text-slate-600">
+                    Applicants scored, ranked, and interview-ready.
+                  </p>
+                </div>
+                <div className="shrink-0 text-right">
+                  <p className="text-2xl font-semibold text-sea-dark">$99</p>
+                  <p className="text-xs text-slate-500">~30 min of your time</p>
+                </div>
+              </div>
             </div>
           </div>
         </AnimateOnScroll>
@@ -780,7 +800,7 @@ export function LandingPage() {
       </SectionShell>
 
       {/* ─── FINAL CTA ─── */}
-      <SectionShell className="pb-8">
+      <SectionShell className="pb-8" id="waitlist">
         <AnimateOnScroll variant="scaleIn">
           <div className="overflow-hidden border border-edge bg-slate-950 px-6 py-12 text-white shadow-[0_35px_90px_-60px_rgba(15,23,42,0.85)] sm:px-10 md:py-16">
             <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
@@ -806,7 +826,7 @@ export function LandingPage() {
                   </div>
                   <div className="border border-white/10 bg-white/5 px-4 py-4">
                     <ClockIcon className="size-5 text-sea-vivid" weight="duotone" />
-                    <p className="mt-3 text-sm text-slate-200">2 hours per hire, not 20</p>
+                    <p className="mt-3 text-sm text-slate-200">30 minutes per hire, not 20 hours</p>
                   </div>
                   <div className="border border-white/10 bg-white/5 px-4 py-4">
                     <CrownSimpleIcon className="size-5 text-sea-vivid" weight="duotone" />

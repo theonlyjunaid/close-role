@@ -39,16 +39,16 @@ export function WaitlistForm({
 
   const handleChange =
     (field: "email" | "companyName" | "hiringRole") =>
-    (event: ChangeEvent<HTMLInputElement>) => {
-      setValues((current) => ({
-        ...current,
-        [field]: event.target.value,
-      }))
+      (event: ChangeEvent<HTMLInputElement>) => {
+        setValues((current) => ({
+          ...current,
+          [field]: event.target.value,
+        }))
 
-      if (status.type !== "idle") {
-        setStatus(initialStatus)
+        if (status.type !== "idle") {
+          setStatus(initialStatus)
+        }
       }
-    }
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -127,7 +127,7 @@ export function WaitlistForm({
           </Button>
         </div>
         <p className="text-sm text-slate-500">
-          Free forever for your first hire. No credit card required.
+          Free for your first job. No credit card required.
         </p>
 
         {status.type !== "idle" ? (
@@ -154,9 +154,9 @@ export function WaitlistForm({
   }
 
   return (
-    <form className={cn("space-y-4", className)} onSubmit={handleSubmit}>
-      <div className="grid gap-3 md:grid-cols-3">
-        <div className="md:col-span-3">
+    <form className={cn("space-y-4", className)} onSubmit={handleSubmit} >
+      <div className="w-full flex flex-col gap-3">
+        <div className="w-full">
           <Label htmlFor="cta-email" className="mb-2">
             Work email
           </Label>
@@ -172,7 +172,7 @@ export function WaitlistForm({
           />
         </div>
 
-        <div>
+        {/* <div>
           <Label htmlFor="cta-company" className="mb-2">
             Company name
           </Label>
@@ -197,7 +197,7 @@ export function WaitlistForm({
             placeholder="Optional"
             className="h-11 border-edge bg-white px-3 text-sm"
           />
-        </div>
+        </div> */}
 
         <div className="flex items-end md:col-span-3">
           <Button
